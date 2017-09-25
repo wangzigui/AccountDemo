@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>accountlog12</groupId>
+  <artifactId>com.nf.accountlog1</artifactId>
+  <packaging>jar</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <!-- 父依赖 -->
+  <parent>
+      <groupId>org.springframework.boot</groupId>
+  	  <artifactId>spring-boot-starter-parent</artifactId>
+      <version>1.5.2.RELEASE</version>
+      <relativePath/>
+  
+  </parent>
+  
+  <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <java.version>1.8</java.version>
+  </properties>
+  
+  <!-- 依赖 -->
+  <dependencies>
+      <dependency>
+      	<groupId>org.springframework.boot</groupId>
+  	  	<artifactId>spring-boot-starter-web</artifactId>
+  	  	<!-- 打包部署到tomcat上面时，不需要打包tmocat相关的jar包，否则会引起jar包冲突 -->
+  	  	<exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+            </exclusion>
+        </exclusions>  	  	
+      </dependency>
+      
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+      </dependency>
+      
+      
+      <!-- jpa start -->
+      <dependency>
+      	<groupId>org.springframework.boot</groupId>
+  	  	<artifactId>spring-boot-starter-data-jpa</artifactId>
+      </dependency>
+      
+      <dependency>
+      	<groupId>mysql</groupId>
+  	  	<artifactId>mysql-connector-java</artifactId>
+      </dependency>
+      <!-- jpa end -->
+      
+      <dependency>
+	  <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      </dependency>
+      
+      <dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-cache</artifactId>
+	  </dependency>
+  
+  </dependencies>
+  
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+          </plugin>
+          
+          <plugin>
+    		  <groupId>org.apache.maven.plugins</groupId>
+    	      <artifactId>maven-war-plugin</artifactId>
+    		  <configuration>
+        		  <warName>springboot</warName>
+    		  </configuration>
+		  </plugin>
+      </plugins>
+  </build>
+  
+</project>
